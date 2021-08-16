@@ -1,0 +1,151 @@
+<div class="container-fluid" mb-5>
+
+  <h1>
+    Login Form
+  </h1>
+  <form #userForm="ngForm" novalidate (ngSubmit)="onSubmit() ">
+
+    {{ userForm.value | json}}
+
+    <div class="alert alert-danger" *ngIf="errorMsg">
+      {{errorMsg}}
+    </div>
+
+    <div class="alert alert-success" *ngIf="token">
+      {{token}}
+    </div>
+
+    <hr />
+    {{userModel | json}}
+
+    <div class="form-group">
+      <label for="">Email</label>
+      <input type="text" name="useremail" class="form-control" [(ngModel)]="userModel.email">
+
+    </div>
+    <div class="form-group">
+      <label for="">Password</label>
+      <input type="password" name="userpassword" class="form-control" [(ngModel)]="userModel.password">
+
+    </div>
+
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+
+  </form>
+  <br>
+  <br>
+  
+
+  <div class="category">
+    <h2>Add category</h2>
+
+    <form #catForm="ngForm" novalidate (ngSubmit)="oncatSubmit() ">
+      <div class="alert alert-danger" *ngIf="errorMsg">
+        {{errorMsg}}
+      </div>
+      {{ catForm.value | json}}
+      <hr />
+      {{catModel | json}}
+
+      <div class="form-group">
+        <label for="">Category</label>
+        <input type="text" name="category" class="form-control" [(ngModel)]="catModel.name">
+
+      </div>
+
+
+      <button class="btn btn-secondary" type="submit">Add Category</button>
+
+    </form>
+
+  </div>
+
+  <br>
+  <br>
+  <div class="product">
+
+    <h2>Add Products</h2>
+    <form #prodForm="ngForm" novalidate (ngSubmit)="onprodSubmit() " >
+
+      <div class="alert alert-danger" *ngIf="errorMsg">
+        {{errorMsg}}
+      </div>
+      {{ prodForm.value | json}}
+      <hr />
+      {{prodModel | json}}
+
+      <button class="btn btn-primary" type="submit">Add Product</button>
+
+      <div class="form-group">
+        <label for="">Product Name</label>
+        <input type="text" name="title" class="form-control" [(ngModel)]="prodModel.title">
+
+      </div>
+      <div class="form-group">
+        <label for="">Price</label>
+        <input type="text" name="price" class="form-control" [(ngModel)]="prodModel.price">
+
+      </div>
+      <div class="form-group">
+        <label for="">Quantity</label>
+        <input type="text" name="quantity" class="form-control" [(ngModel)]="prodModel.quantity">
+
+      </div>
+      <div class="form-group">
+        <label for="">Category</label>
+        <input type="text" name="category" class="form-control" [(ngModel)]="prodModel.category">
+
+      </div>
+      <div class="form-group">
+        <label for="">Description</label>
+        <input type="text" name="description" class="form-control" [(ngModel)]="prodModel.description">
+
+      </div>
+      <!-- <div class="form-group">
+        <label for="">Upload Image</label>
+        <input type="file" name="image" class="form-control" [(ngModel)]="prodModel.images" (change)="onFileSelected($event)">
+
+        <button type="button" (click)="onUpload()" > Upload</button>
+      </div> -->
+
+
+
+      <div>
+        <table class="table table-striped">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Product Name</th>
+                  <th>Category</th>
+                  <th>Price</th>
+
+                  <th>Actions</th>
+
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let product of Products">
+                  <td>{{product.result.id}</td>
+                  <td>{{product.result.title}}</td>
+                  <td>{{product.category}}</td>
+                  <td>{{product.result.price}}</td>
+
+                  <td>
+                    
+
+                  </td>
+
+              </tr>
+          </tbody>
+      </table>
+
+      </div>
+
+
+
+
+    </form>
+  </div>
+
+</div>
